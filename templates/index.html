@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
-{% block title %}Flask{% endblock %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky{% endblock %}
+
 {% block container %}
 <div class="page-header">
-    <p>Your browser is {{ user_agent }}</p>
+    <h1>Hello, {% if name %}{{ name|capitalize }}{% else %}Estranho{% endif %}!</h1>
 </div>
+{{ wtf.quick_form(form) }}
 {% endblock %}

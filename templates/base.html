@@ -1,6 +1,11 @@
 {% extends 'bootstrap/base.html' %}
 {% block html_attribs %} lang="pt-br" {% endblock %}
 {% block title %} Base {% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='flask.png') }} " type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='flask.png') }}" type="image/x-icon" >
+{% endblock %}
 {% block navbar %}
     <div class="navbar navbar-inverse" role="navigation">
         <div class="container">
@@ -24,7 +29,13 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container">
-        {% block container %}{% endblock %}
-    </div>
+<div class="container" >
+    {% block container %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+    {{ moment.include_moment() }}
+    {{ moment.locale('pt-br') }}
 {% endblock %}
